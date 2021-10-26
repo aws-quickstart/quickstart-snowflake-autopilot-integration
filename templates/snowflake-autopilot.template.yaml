@@ -155,7 +155,7 @@ Mappings:
     Attributes:
       Identifier: "'SagemakerProxy/0.1'"
     Locations:
-      CodeBucket: davmayd2
+      CodeBucket: aws-quickstart
       PathToLayerCode: quickstart-snowflake-autopilot-integration/functions/packages/snowflake-connector-python-0.1.zip
       PathToLambdaCode: quickstart-snowflake-autopilot-integration/functions/packages/create-resources-0.1.zip
 Conditions:
