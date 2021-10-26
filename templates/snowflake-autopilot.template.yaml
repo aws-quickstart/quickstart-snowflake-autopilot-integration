@@ -5,7 +5,7 @@ Metadata:
     ParameterGroups:
       - Label: AWS configuration
         Parameters:
-          - s3BucketName
+#          - s3BucketName
           - apiGatewayName
           - apiGatewayStageName
           - kmsKeyArn
@@ -37,8 +37,8 @@ Metadata:
         default: Quick Start S3 bucket Region
       QSS3KeyPrefix:
         default: Quick Start S3 key prefix
-      s3BucketName:
-        default: S3 bucket name
+#      s3BucketName:
+#        default: S3 bucket name
       snowflakeDatabaseName:
         default: Snowflake database name
       snowflakeSchemaName:
@@ -54,10 +54,10 @@ Metadata:
       snowflakePassword:
         default: Snowflake password
 Parameters:
-  s3BucketName:
-    Type: String
-    Description: "Name of the S3 bucket to be created, must be unique"
-    MinLength: 1
+#  s3BucketName:
+#    Type: String
+#    Description: "Name of the S3 bucket to be created, must be unique"
+#    MinLength: 1
   snowflakeAccount:
     Type: String
     Description: "Snowflake account"
@@ -150,31 +150,32 @@ Parameters:
       a forward slash. See https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html 
       and https://aws-quickstart.github.io/option1.html.
     Type: String
-#Mappings:
-#  Package:
-#    Attributes:
-#      Identifier: "'SagemakerProxy/0.1'"
-#    Locations:
-#      CodeBucket: !Ref 'QSS3BucketName'
-#      PathToLayerCode: !Sub "${QSS3KeyPrefix}/functions/packages/snowflake-connector-python-0.1.zip"
-#      PathToLambdaCode: !Sub "${QSS3KeyPrefix}/functions/packages/create-resources-0.1.zip"
+Mappings:
+  Package:
+    Attributes:
+      Identifier: "'SagemakerProxy/0.1'"
+    Locations:
+      CodeBucket: davmayd2
+      PathToLayerCode: quickstart-snowflake-autopilot-integration/functions/packages/snowflake-connector-python-0.1.zip
+      PathToLambdaCode: quickstart-snowflake-autopilot-integration/functions/packages/create-resources-0.1.zip
 Conditions:
   KMSKeyArnProvided: !Not
     - !Equals
       - !Ref kmsKeyArn
       - ""
+  UsingDefaultBucket: !Equals [!Ref QSS3BucketName, 'aws-quickstart']
 Resources:
   snowflakeSecret:
     Type: AWS::SecretsManager::Secret
     Properties:
       Name: !Sub 'AWSQuickStart/${AWS::StackName}/snowflakeSecret'
       Description: Snowflake secret
-      SecretString: !Sub '{ "username" : "${snowflakeUser}", "password" : "${snowflakePassword}", "snowflakeAccount" : "${snowflakeAccount} '
+      SecretString: !Sub '{ "username" : "${snowflakeUser}", "password" : "${snowflakePassword}", "accountid" : "${snowflakeAccount}" }'
   S3Bucket:
     Type: 'AWS::S3::Bucket'
     DeletionPolicy: Delete
-    Properties:
-      BucketName: !Ref s3BucketName
+#    Properties:
+#      BucketName: !Ref s3BucketName
   SnowflakeAutoMLExecutionRole:
     Type: 'AWS::IAM::Role'
     Properties:
@@ -882,11 +883,11 @@ Resources:
       - CopyZipsRole
     Properties:
       ServiceToken: !GetAtt CopyZipsLambda.Arn
-      DestBucket: !Ref s3BucketName
-      SourceBucket: !Ref "QSS3BucketName"
+      DestBucket: !Ref S3Bucket
+      SourceBucket: !If [UsingDefaultBucket, !Sub '${QSS3BucketName}-${AWS::Region}', !Ref QSS3BucketName]
       ObjectKeys:
-        - PathToLayerCode: !Sub "${QSS3KeyPrefix}/functions/packages/snowflake-connector-python-0.1.zip"
-        - PathToLambdaCode: !Sub "${QSS3KeyPrefix}/functions/packages/create-resources-0.1.zip"
+        - !FindInMap [Package, Locations, PathToLayerCode]
+        - !FindInMap [Package, Locations, PathToLambdaCode]
   CreateSnowflakeResourcesLambdaLayer:
     Type: AWS::Lambda::LayerVersion
     DependsOn:
@@ -895,15 +896,15 @@ Resources:
       CompatibleRuntimes:
         - python3.7
       Content:
-        S3Bucket: !Ref s3BucketName
-        S3Key: !Sub "${QSS3KeyPrefix}/functions/packages/snowflake-connector-python-0.1.zip"
+        S3Bucket: !Ref S3Bucket
+        S3Key: !Sub "${QSS3KeyPrefix}functions/packages/snowflake-connector-python-0.1.zip"
       Description: 'Layer to download Snowflake driver'
   CreateSnowflakeResourcesLambda:
     Type: AWS::Lambda::Function
     Properties:
       Code:
-        S3Bucket: !Ref s3BucketName
-        S3Key: !Sub "${QSS3KeyPrefix}/functions/packages/create-resources-0.1.zip"
+        S3Bucket: !Ref S3Bucket
+        S3Key: !Sub "${QSS3KeyPrefix}functions/packages/create-resources-0.1.zip"
       Layers:
             - Ref: CreateSnowflakeResourcesLambdaLayer
       Handler: create-resources.lambda_handler
@@ -918,7 +919,7 @@ Resources:
           AutoMLRoleARN: !GetAtt SnowflakeAutoMLExecutionRole.Arn
           AutoMLRoleName: !Ref SnowflakeAutoMLExecutionRole
           Region: !Sub "${AWS::Region}"
-          S3BucketName: !Ref s3BucketName
+          S3BucketName: !Ref S3Bucket
           SecretArn: !Ref snowflakeSecret
           KmsKeyArn: !Ref kmsKeyArn
           # Future consideration
