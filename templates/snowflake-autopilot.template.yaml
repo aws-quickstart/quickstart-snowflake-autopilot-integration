@@ -6,7 +6,7 @@ Metadata:
       - Label:
           default: AWS configuration
         Parameters:
-#          - s3BucketName
+          - s3BucketName
           - apiGatewayName
           - apiGatewayStageName
           - kmsKeyArn
@@ -39,8 +39,8 @@ Metadata:
         default: Quick Start S3 bucket Region
       QSS3KeyPrefix:
         default: Quick Start S3 key prefix
-#      s3BucketName:
-#        default: S3 bucket name
+      s3BucketName:
+        default: S3 bucket name
       snowflakeDatabaseName:
         default: Snowflake database name
       snowflakeSchemaName:
@@ -56,10 +56,10 @@ Metadata:
       snowflakePassword:
         default: Snowflake password
 Parameters:
-#  s3BucketName:
-#    Type: String
-#    Description: "Name of the S3 bucket to be created, must be unique"
-#    MinLength: 1
+  s3BucketName:
+    Type: String
+    Description: "Name of the S3 bucket to be created, must be unique"
+    MinLength: 1
   snowflakeAccount:
     Type: String
     Description: "Snowflake account"
@@ -91,7 +91,7 @@ Parameters:
 #    Description: "(Optional) Comma delimited list of subnet ids for VPC configuration"
   snowflakeRole:
     Type: String
-    Description: "Snowflake Role with permissions to create Storage Integrations, API Integrations and Functions"
+    Description: "Snowflake Role with permissions to create Storage Integrations, API Integrations, and Functions"
     Default: "ACCOUNTADMIN"
     MinLength: 1
   snowflakeDatabaseName:
@@ -176,8 +176,8 @@ Resources:
   S3Bucket:
     Type: 'AWS::S3::Bucket'
     DeletionPolicy: Delete
-#    Properties:
-#      BucketName: !Ref s3BucketName
+    Properties:
+      BucketName: !Ref s3BucketName
   SnowflakeAutoMLExecutionRole:
     Type: 'AWS::IAM::Role'
     Properties:
@@ -921,7 +921,7 @@ Resources:
           AutoMLRoleARN: !GetAtt SnowflakeAutoMLExecutionRole.Arn
           AutoMLRoleName: !Ref SnowflakeAutoMLExecutionRole
           Region: !Sub "${AWS::Region}"
-          S3BucketName: !Ref S3Bucket
+          S3BucketName: !Ref S3BucketName
           SecretArn: !Ref snowflakeSecret
           KmsKeyArn: !Ref kmsKeyArn
           # Future consideration

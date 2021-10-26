@@ -8,8 +8,4 @@ Verify that your AWS account has the permissions required to create the resource
 
 ==== Prepare your {partner-company-name} account
 
-// Describe any setup required in the partner portal/account prior to template launch.
-
-==== Prepare for the deployment
-
-// Describe any preparation required to complete the product build, such as obtaining licenses or placing files in S3.
+Ensure the Snowflake account you will be using for this deployment has access to a role with permission to create Storage Integrations, API Integrations, and Functions.
