@@ -1,0 +1,19 @@
+project:
+  name: quickstart-snowflake-autopilot-integration
+  owner: quickstart-eng@amazon.com
+  package_lambda: false
+  regions:
+  - us-east-2
+  s3_bucket: ''
+tests:
+  snowflake:
+    parameters:
+      snowflakeDatabaseName: override
+      snowflakeSchemaName: PUBLIC
+      snowflakeRole: ACCOUNTADMIN
+      snowflakeAccount: override
+      snowflakeUser: override
+      snowflakePassword: override
+      QSS3BucketName: $[taskcat_autobucket]
+      QSS3BucketRegion: $[taskcat_current_region]
+    template: templates/snowflake-autopilot.template.yaml
