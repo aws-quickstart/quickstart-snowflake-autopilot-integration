@@ -3,13 +3,15 @@ Description: Snowflake autopilot integration (qs-1sde6uo9p)
 Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
-      - Label: AWS configuration
+      - Label:
+          default: AWS configuration
         Parameters:
 #          - s3BucketName
           - apiGatewayName
           - apiGatewayStageName
           - kmsKeyArn
-      - Label: Snowflake configuration
+      - Label: 
+          default: Snowflake configuration
         Parameters:
           - snowflakeDatabaseName
           - snowflakeSchemaName
