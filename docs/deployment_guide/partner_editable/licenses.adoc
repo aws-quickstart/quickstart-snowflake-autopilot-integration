@@ -1,4 +1,4 @@
-// Include details about any licenses and how to sign up. Provide links as appropriate.
+// Include details about any licenses and how to sign up. Provide links as appropriate..
 
 There are no additional licenses required to use this Quick Start.
 
