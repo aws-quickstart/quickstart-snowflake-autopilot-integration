@@ -6,7 +6,7 @@ Metadata:
       - Label:
           default: AWS configuration
         Parameters:
-          - s3BucketName
+          - S3BucketName
           - apiGatewayName
           - apiGatewayStageName
           - kmsKeyArn
@@ -39,7 +39,7 @@ Metadata:
         default: Quick Start S3 bucket Region
       QSS3KeyPrefix:
         default: Quick Start S3 key prefix
-      s3BucketName:
+      S3BucketName:
         default: S3 bucket name
       snowflakeDatabaseName:
         default: Snowflake database name
@@ -56,7 +56,7 @@ Metadata:
       snowflakePassword:
         default: Snowflake password
 Parameters:
-  s3BucketName:
+  S3BucketName:
     Type: String
     Description: "Name of the S3 bucket to be created, must be unique"
     MinLength: 1
@@ -177,7 +177,7 @@ Resources:
     Type: 'AWS::S3::Bucket'
     DeletionPolicy: Delete
     Properties:
-      BucketName: !Ref s3BucketName
+      BucketName: !Ref S3BucketName
   SnowflakeAutoMLExecutionRole:
     Type: 'AWS::IAM::Role'
     Properties:

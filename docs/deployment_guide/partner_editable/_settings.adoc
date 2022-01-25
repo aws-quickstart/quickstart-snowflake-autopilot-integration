@@ -1,0 +1,13 @@
+:quickstart-project-name: quickstart-snowflage-autopilot-integration
+:quickstart-github-org: aws-quickstart
+:partner-product-name: SageMaker Autopilot Integration with Snowflake
+:partner-product-short-name: Autopilot Integration
+:partner-company-name: Snowflake, Inc.
+:doc-month: January
+:doc-year: 2022
+//:partner-contributors: John Smith, {partner-company-name}
+//:other-contributors: Akua Mansa, Trek10
+:aws-contributors: Bosco Albuquerque, AWS Data and Analytics team, and Dave May, AWS Integration & Automation team
+:deployment_time: 10 minutes
+:default_deployment_region: us-east-2
+// :private_repo:

@@ -1,0 +1,5 @@
+// Edit this placeholder text to accurately describe your architecture.
+
+This Quick Start provides one deployment option:
+
+* http://qs_launch_permalink[Deploy {partner-product-short-name} into your AWS account]. This option deploys Snowflake Autopilot integration into your AWS account.
