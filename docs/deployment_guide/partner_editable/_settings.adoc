@@ -3,7 +3,7 @@
 :partner-product-name: Amazon SageMaker Autopilot Integration with Snowflake
 :partner-product-short-name: SageMaker Autopilot Integration with Snowflake
 :partner-company-name: Snowflake Inc.
-:doc-month: January
+:doc-month: February
 :doc-year: 2022
 :partner-contributors: <name?>, {partner-company-name}
 //:other-contributors: Akua Mansa, Trek10
