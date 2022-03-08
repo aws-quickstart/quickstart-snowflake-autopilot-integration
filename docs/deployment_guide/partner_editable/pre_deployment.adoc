@@ -4,7 +4,7 @@ Complete the following steps before you deploy the Quick Start.
 
 === Sign up for a Snowflake account
 
-If you don't already have one, https://signup.snowflake.com/[sign up for a Snowflake account].
+If you don't already have one, https://signup.snowflake.com/[sign up for a Snowflake account^].
 
 === Load a tabular dataset into Snowflake
 
