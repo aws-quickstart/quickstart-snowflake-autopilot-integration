@@ -3,5 +3,6 @@
 There are no additional licenses required to use this Quick Start.
 
 //TODO Dave, Do people need a Snowflake "license"? Or what wording would be accurate?
+// They need a Snowflake "account", not a license
 
 There is no cost to use this Quick Start, but you will be billed for any AWS services or resources that this Quick Start deploys. For more information, refer to the https://fwd.aws/rA69w?[AWS Quick Start General Information Guide^].

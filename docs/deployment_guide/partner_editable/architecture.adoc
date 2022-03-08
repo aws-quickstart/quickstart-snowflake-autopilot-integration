@@ -8,14 +8,11 @@ image::../docs/deployment_guide/images/snowflake-sagemaker-autopilot-architectur
 
 As shown in <<architecture1>>, this Quick Start sets up the following:
 
-* An AWS CloudFormation template to [___].
 * An Amazon API Gateway endpoint to integrate your AWS account with your Snowflake account.
 * An AWS Lambda function to set up integration with your Snowflake data lake.
 * An Amazon Simple Storage Service (Amazon S3) bucket to store assets.
-* Amazon SageMaker to [___].
-
-//TODO Dave, Is there something special in this architecture that it's important to show the CFN template box. We don't usually show the template, but maybe there's a reason here? 
-
-//TODO Dave, Please fill in the blanks.
+* Amazon SageMaker to apply machine learning models to your Snowflake data.
 
 //TODO Dave, Since the original bullets referred to resources (Lambda function, S3 bucket, CFN template), I swapped in the resource icons for them. Then I did the same for API Gateway for consistency; does the endpoint icon and label work there?
+
+// Yes, that makes sense
