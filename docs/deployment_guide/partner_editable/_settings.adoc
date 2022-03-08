@@ -1,9 +1,9 @@
-:quickstart-project-name: quickstart-snowflage-autopilot-integration
+:quickstart-project-name: quickstart-snowflake-autopilot-integration
 :quickstart-github-org: aws-quickstart
-:partner-product-name: Amazon SageMaker Autopilot Integration with Snowflake
-:partner-product-short-name: SageMaker Autopilot Integration with Snowflake
-:partner-company-name: Snowflake Inc.
-:doc-month: February
+:partner-product-name: Amazon SageMaker Autopilot for Snowflake
+:partner-product-short-name: SageMaker Autopilot for Snowflake
+:partner-company-name: Snowflake
+:doc-month: March
 :doc-year: 2022
 :partner-contributors: <name?>, {partner-company-name}
 //:other-contributors: Akua Mansa, Trek10
@@ -12,3 +12,5 @@
 :deployment_time: 10 minutes
 :default_deployment_region: us-east-2
 // :private_repo:
+
+//TODO Dave, Whose name shall we put in for Snowflake?
