@@ -2,9 +2,15 @@
 
 Complete the following steps before you deploy the Quick Start. 
 
+=== Sign up for a Snowflake account
+
+If you don't already have one, sign up for a Snowflake account.
+
+//TODO Dave, What link to we want to point to for this? Anything else we need to say here?
+
 === Load a tabular dataset into Snowflake
 
-Load a tabular dataset, such as a CSV file, into Snowflake, and put it in a Snowflake table. For instance, you can use the Abalone dataset, originally from the https://archive.ics.uci.edu/ml/datasets/abalone[University of California Irvine (UCI) Machine Learning Repository^].
+Load a tabular dataset, such as a comma-separated-values (CSV) file, into Snowflake, and put it in a Snowflake table. For instance, you can use the Abalone dataset, originally from the https://archive.ics.uci.edu/ml/datasets/abalone[University of California Irvine (UCI) Machine Learning Repository^].
 
 === Generate and upload the layer and Lambda code to an existing S3 bucket
 
