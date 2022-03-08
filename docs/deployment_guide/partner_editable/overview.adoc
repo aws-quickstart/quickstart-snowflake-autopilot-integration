@@ -1,7 +1,7 @@
-This Quick Start deploys {partner-product-name} on the AWS Cloud. If you are unfamiliar with AWS Quick Starts we recommend that you read the https://aws-ia.github.io/content/qs_info.html[AWS Quick Start General Content Guide].
+This Quick Start deploys {partner-product-name} on the AWS Cloud. If you are unfamiliar with AWS Quick Starts, refer to the https://fwd.aws/rA69w?[AWS Quick Start General Information Guide^].
 
-You can use this Quick Start to add machine-learning capabilities to your Snowflake account using Amazon SageMaker.
+To deploy this Quick Start, you need a Snowflake account and an AWS account. Follow the instructions in this guide to set up and deploy the AWS CloudFormation template for development, debugging, or testing purposes. 
 
-In order to use this package, you need a Snowflake account and an AWS account. After a few manual steps, the CloudFormation template can be deployed to your AWS account in order to create all the AWS resources (API Gateway, Lambda) and Snowflake resources (external functions) required.
+For instructions on setting up your Snowflake account with Amazon SageMaker, refer to the https://github.com/aws-samples/amazon-sagemaker-integration-with-snowflake/blob/main/snowflake-integration-overview.md[Snowflake + Amazon SageMaker Autopilot Integration Overview].
 
-The instructions in this guide allow you to set up and deploy the CloudFormation template for development/debugging/testing purposes. For a quick start user guide on how to set up your Snowflake account with Amazon SageMaker, please refer to the https://github.com/aws-samples/amazon-sagemaker-integration-with-snowflake/blob/main/snowflake-integration-overview.md[Snowflake Integration Overview] article.
+For detailed documentation about the APIs provided by the stack, refer to the https://github.com/aws-samples/amazon-sagemaker-integration-with-snowflake/blob/main/snowflake-integration-overview.md[Snowflake Integration Overview^].

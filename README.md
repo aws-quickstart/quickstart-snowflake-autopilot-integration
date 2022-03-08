@@ -1,6 +1,6 @@
-## Amazon SageMaker Autopilot Integration with Snowflake—Quick Start
+## Amazon SageMaker Autopilot for Snowflake—Quick Start
 
-For architectural details, step-by-step instructions, and customization options, see the [deployment guide](https://aws-quickstart.github.io/quickstart-snowflake-autopilot-integration/).
+For architectural details, step-by-step instructions, and customization options, see the [deployment guide](https://fwd.aws/pdMyp?).
 
 To post feedback, submit feature ideas, or report bugs, use the **Issues** section of this GitHub repo. 
 
