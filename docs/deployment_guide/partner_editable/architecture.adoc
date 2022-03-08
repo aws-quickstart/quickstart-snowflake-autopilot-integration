@@ -9,10 +9,6 @@ image::../docs/deployment_guide/images/snowflake-sagemaker-autopilot-architectur
 As shown in <<architecture1>>, this Quick Start sets up the following:
 
 * An Amazon API Gateway endpoint to integrate your AWS account with your Snowflake account.
-* An AWS Lambda function to set up integration with your Snowflake data lake.
-* An Amazon Simple Storage Service (Amazon S3) bucket to store assets.
 * Amazon SageMaker to apply machine learning models to your Snowflake data.
-
-//TODO Dave, Since the original bullets referred to resources (Lambda function, S3 bucket, CFN template), I swapped in the resource icons for them. Then I did the same for API Gateway for consistency; does the endpoint icon and label work there?
-
-// Yes, that makes sense
+* An Amazon Simple Storage Service (Amazon S3) bucket to store assets.
+* An AWS Lambda function to integrate with your Snowflake data lake.
