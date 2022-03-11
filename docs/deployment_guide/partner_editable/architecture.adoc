@@ -4,11 +4,11 @@ Deploying this Quick Start with default parameters builds the following {partner
 
 [#architecture1]
 .Quick Start architecture for {partner-product-short-name} on AWS
-image::../docs/deployment_guide/images/snowflake-sagemaker-autopilot-architecture_diagram.png[Architecture]
+image::../docs/deployment_guide/images/snowflake-sagemaker-autopilot-architecture_diagram.png[Architecture, 80%]
 
 As shown in <<architecture1>>, this Quick Start sets up the following:
 
+* An AWS Lambda function to configure API integration, external functions, and custom serializers in your Snowflake account.
 * An Amazon API Gateway endpoint to integrate your AWS account with your Snowflake account.
 * Amazon SageMaker to apply machine learning models to your Snowflake data.
 * An Amazon Simple Storage Service (Amazon S3) bucket to store assets.
-* An AWS Lambda function to integrate with your Snowflake data lake.
