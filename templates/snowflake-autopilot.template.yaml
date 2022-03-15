@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: Snowflake autopilot integration (qs-1sde6uo9p)
+Description: Snowflake integration with SageMaker Autopilot (qs-1sde6uo9p)
 Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
@@ -52,32 +52,32 @@ Metadata:
       snowflakeAccount:
         default: Snowflake account ID
       snowflakeUser:
-        default: Snowflake username
+        default: Snowflake user name
       snowflakePassword:
         default: Snowflake password
 Parameters:
   S3BucketName:
     Type: String
-    Description: "Name of the S3 bucket to be created, must be unique"
+    Description: "Name of the S3 bucket to create for Amazon SageMaker assets. This name must be unique."
     MinLength: 1
   snowflakeAccount:
     Type: String
-    Description: "Snowflake account"
+    Description: "ID for your Snowflake account."
     MinLength: 1
   snowflakeUser:
     Type: String
-    Description: "Snowflake username"
+    Description: "User name for your Snowflake account."
     MinLength: 1
   snowflakePassword:
     Type: String
     NoEcho: true
-    Description: "Snowflake password"
+    Description: "Password for your Snowflake account."
     MinLength: 1
   kmsKeyArn:
     Type: String
     AllowedPattern: "^(arn:aws[a-z-]*:kms:[a-z0-9-]*:[0-9]{12}:key\\/.+)?$"
     Default: ""
-    Description: "(Optional) ARN of the AWS Key Management Service key that Amazon SageMaker uses to encrypt job outputs. The KmsKeyId is applied to all outputs."
+    Description: "(Optional) ARN of the AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt job outputs. This ARN is applied to all outputs."
 # Future consideration
 #  vpcSecurityGroupIds:
 #    Type: "String"
@@ -91,27 +91,27 @@ Parameters:
 #    Description: "(Optional) Comma delimited list of subnet ids for VPC configuration"
   snowflakeRole:
     Type: String
-    Description: "Snowflake Role with permissions to create Storage Integrations, API Integrations, and Functions"
+    Description: "Snowflake role with permissions to create storage integrations, API integrations, and functions."
     Default: "ACCOUNTADMIN"
     MinLength: 1
   snowflakeDatabaseName:
     Type: String
-    Description: "Snowflake Database in which external functions will be created"
+    Description: "Snowflake database in which external functions will be created."
     MinLength: 1
   snowflakeSchemaName:
     Type: String
-    Description: "Snowflake Database Schema in which external functions will be created"
+    Description: "Snowflake database schema in which external functions will be created."
     MinLength: 1
   apiGatewayName:
     Type: "String"
     AllowedPattern: "^[a-zA-Z0-9]+[-a-zA-Z0-9-]+[-a-zA-Z0-9]+$"
     Default: "snowflake-autopilot-api"
-    Description: "API Gateway name"
+    Description: "Name of the API Gateway domain."
   apiGatewayStageName:
     Type: "String"
     AllowedPattern: "^[-a-zA-Z0-9]+$"
     Default: "main"
-    Description: "API deployment stage"
+    Description: "Name of the API Gateway deployment stage."
     MinLength: 1
   snowflakeResourceSuffix:
     Type: String
