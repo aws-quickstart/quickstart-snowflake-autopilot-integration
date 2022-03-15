@@ -1,53 +1,53 @@
-//Include any pre-deployment steps here, such as signing up for a Marketplace AMI or making any changes to a Partner account. If there are none leave this file empty.
+== Predeployment steps
 
-== Pre deployment steps
+Complete the following steps before you deploy the Quick Start. 
 
-=== Snowflake Resources needed
+=== Sign up for a Snowflake account
 
-Load a tabular dataset (i.e. a CSV file) into Snowflake and put it on a Snowflake table. For instance, you can use the Abalone data, originally from the UCI data repository (https://archive.ics.uci.edu/ml/datasets/abalone).
+If you don't already have one, https://signup.snowflake.com/[sign up for a Snowflake account^].
 
-=== Generate and upload Layer and Lambda code to an existing S3 bucket
+=== Load a tabular dataset into Snowflake
 
-The Snowflake Python connector is not part of the AWS Lambda runtime. In order to load the Snowflake Python connectior into Lambda, we need to use a Lambda layer.
+Load a tabular dataset, such as a comma-separated-values (CSV) file, into Snowflake, and put it in a Snowflake table. For instance, you can use the Abalone dataset, originally from the https://archive.ics.uci.edu/ml/datasets/abalone[University of California Irvine (UCI) Machine Learning Repository^].
 
-Lambda layers take a ZIP file with the libraries (formatted according to the language used https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) from S3 and loads them into the Lambda runtime environment.
+=== Generate and upload the layer and Lambda code to an existing S3 bucket
 
-The Lambda layer ZIP file is hosted in a publicly accessible S3 bucket (sagemaker-sample-files) that this CloudFormation template refers to. In case you wish to generate the layer manually (for development/testing), please follow the instructions below.
+The Snowflake Python connector is not part of the AWS Lambda runtime. Use a Lambda layer to load the Snowflake Python connector into Lambda. The Lambda layer .zip file is hosted in a publicly accessible S3 bucket (sagemaker-sample-files) that this CloudFormation template refers to. 
 
-==== Generate ZIP file containing the Layer code
+Lambda layers take a .zip file with the libraries (formatted according to the language used) from S3 and load them into the Lambda runtime environment. For details, refer to https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html[Creating and sharing Lambda layers^]).
 
-The script generate-layer.sh located in the customer-stack/ directory will be the responsible of downloading the needed files.
+==== (Optional) Manually generate the .zip file that contains the layer code
 
-In order to execute it, from a Linux terminal run:
+If you want to generate the Lambda layer manually for development or testing, follow these instructions. Use the script `generate-layer.sh`, located in the `customer-stack/` directory, to download the needed files.
 
+. From a Linux terminal, run the script as follows:
++
 ....
 % cd customer-stack/
 % bash generate-layer.sh
 % cd layer/snowflake-connector-python/
 % zip -r snowflake-connector-python-<version>.zip .
 ....
++
+These commands generate a file called `snowflake-connector-python-.zip`, which contains the libraries for the Lambda function.
 
-These commands will generate a file called snowflake-connector-python-.zip containing the libraries for the Lambda.
+. Upload the generated file to your S3 bucket, and use the corresponding S3 URL as a reference for your Lambda layer.
 
-You can then upload the generated file in your S3 bucket and use the corresponding S3 URL as a reference for your Lambda layer.
+==== (Optional) Manually generate the .zip file that contains the Lambda code
 
-==== Generate ZIP file containing the Lambda code
+The Lambda function can't be specified inline on the CloudFormation template. Customers can see and edit it after the stack is created. 
 
-In order to load the libraries, the Lambda function can't be specified inline on the CloudFormation template (it will be visible and editable for the customers once the stack was created).
+Load the libraries as follows:
 
-As such, we need to ZIP the Lambda Python code and upload it in the same S3 bucket where we already uploaded the layer ZIP file in the previous step.
+. Zip the Lambda Python code, and upload the .zip file to the same S3 bucket where you uploaded the layer .zip file in the previous section.
 
-From a Linux terminal, run:
-
+. From a Linux terminal, run:
++
 ....
 % cd customer-stack/
 zip -r create-resources-<version>.zip create-resources.py
 ....
++
+These commands generate a file called `create-resources-.zip`, which contains the Lambda code.
 
-These commands will generate a file called create-resources-.zip containing the Lambda code.
-
-You can then upload the generated file in your S3 bucket and use the corresponding S3 URL as a reference for your Lambda function code.
-
-=== APIs
-
-For detailed documentation about the APIs provided by the stack, please refer to the https://github.com/aws-samples/amazon-sagemaker-integration-with-snowflake/blob/main/snowflake-integration-overview.md[Snowflake Integration Overview] article.
+. Upload the generated file to your S3 bucket, and use the corresponding S3 URL as a reference for your Lambda function code.
