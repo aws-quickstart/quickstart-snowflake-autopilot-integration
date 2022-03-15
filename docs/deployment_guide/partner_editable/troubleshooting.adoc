@@ -1,3 +1,7 @@
-//Add any unique troubleshooting steps here.
+For troubleshooting common Quick Start issues, refer to the https://fwd.aws/rA69w?[AWS Quick Start General Information Guide^] and https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html[Troubleshooting CloudFormation^].
 
-For troubleshooting common Quick Start issues visit the https://aws-ia.github.io/content/qs_info.html[AWS Quick Start General Content Guide] or the https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html[Troubleshooting CloudFormation] page in the AWS documentation.
+== Resources
+
+* https://github.com/aws-samples/amazon-sagemaker-integration-with-snowflake/blob/main/snowflake-integration-overview.md[Snowflake + Amazon SageMaker Autopilot Integration Overview] (instructions on setting up your Snowflake account with Amazon SageMaker)
+
+* https://github.com/aws-samples/amazon-sagemaker-integration-with-snowflake/blob/main/snowflake-integration-overview.md[Snowflake Integration Overview^] (documentation about the APIs provided by the stack)
